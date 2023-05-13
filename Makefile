@@ -14,7 +14,7 @@ all:
 
 clean:
 	@rm -rf build/*
-#	@git clean -fXd
+	@git clean -fXd
 
 cleanall: clean
 	@docker rmi -f ducksauz/esp-matter-dev 2>/dev/null

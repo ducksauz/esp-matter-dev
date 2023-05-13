@@ -19,10 +19,10 @@
 	],
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": "bash",
-		"idf.espIdfPath": "/opt/espressif/esp-idf",
+		"idf.espIdfPath": "/opt/esp/idf",
 		"idf.customExtraPaths": "",
-		"idf.pythonBinPath": "/opt/espressif/tools/python_env/idf4.4_py3.9_env/bin/python",
-		"idf.toolsPath": "/opt/espressif",
+		"idf.pythonBinPath": "/opt/esp/tools/python_env/idf5.1_py3.9_env/bin/python",
+		"idf.toolsPath": "/opt/esp/tools",
 		"idf.gitPath": "/usr/bin/git"
 	},
 	"runArgs": ["--privileged"]
