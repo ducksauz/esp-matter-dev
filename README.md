@@ -9,12 +9,12 @@ There's a handy Makefile
     make build     - Build the tooling container
     make run       - Run the tooling container
 
-`make run` or the below command will run the container with 
+`make run` or the below command will run the container with
 /workspaces mounted to $PWD. You'll do your builds inside the container,
 but can use the editor of your choice in your host OS. You'll
 also access build artifacts from your host OS to flash them to
 the ESP32C6 boards.
 
-```
-docker run -it --mount type=bind,source="$(pwd)",target=/workspaces ducksauz/esp-matter-dev:latest
-```
+    docker run -it --mount type=bind,source="$(pwd)",target=/workspaces ducksauz/esp-matter-dev:latest
+
+This container is also available at https://hub.docker.com/r/ducksauz/esp-matter-dev/tags
