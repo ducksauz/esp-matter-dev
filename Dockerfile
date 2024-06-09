@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 ARG DEBIAN_FRONTEND=nointeractive
 
@@ -7,6 +7,16 @@ RUN : \
   && apt install -fy --fix-missing \
     autoconf \
     automake \
+  && rm -rf /var/lib/apt/lists/ \
+  && : # last line
+
+
+
+RUN : \
+  && apt-get update \
+  && apt install -fy --fix-missing \
+#    autoconf \
+#    automake \
     bison \
     bridge-utils \
     ccache \
@@ -62,9 +72,9 @@ RUN : \
     openjdk-8-jdk \
     pkg-config \
     python-is-python3 \
-    python3.9 \
-    python3.9-dev \
-    python3.9-venv \
+    python3.11 \
+    python3.11-dev \
+    python3.11-venv \
     rsync \
     shellcheck \
     strace \
@@ -92,8 +102,8 @@ RUN : \
   && apt-get install -y software-properties-common \
   && add-apt-repository universe \
   && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-  && python3.9 get-pip.py \
-  && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 \
+  && python3.11 get-pip.py \
+  && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 \
   && rm -rf /var/lib/apt/lists/ \
   && : # last line
 
@@ -152,7 +162,7 @@ RUN : \
   && rm -rf include-what-you-use \
   && : # last line
 
-# No idea about this. Just cargo-culting from the existing espressif Dockerfile
+# No idea about this. Just copying verbatim from the existing espressif Dockerfile
 ENV LD_LIBRARY_PATH_TSAN=/usr/lib/x86_64-linux-gnu-tsan
 
 RUN : \
@@ -195,7 +205,7 @@ RUN update-alternatives --install /usr/local/bin/usbip usbip `ls /usr/lib/linux-
 # Use IDF_INSTALL_TARGETS to install tools only for selected chip targets (CSV)
 
 ARG IDF_CLONE_URL=https://github.com/espressif/esp-idf.git
-ARG IDF_CLONE_BRANCH_OR_TAG=release/v5.1
+ARG IDF_CLONE_BRANCH_OR_TAG=v5.2.2
 ARG IDF_CHECKOUT_REF=
 ARG IDF_CLONE_SHALLOW=1
 ARG IDF_INSTALL_TARGETS=all
@@ -284,3 +294,4 @@ CMD [ "/bin/bash" ]
 # ENTRYPOINT [ "/opt/esp/entrypoint.sh" ]
 
 # CMD ["/bin/bash"]
+
